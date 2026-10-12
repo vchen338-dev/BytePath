@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="css/style.css">
   <script src="js/theme.js"></script>
   <style>
-    
+
     .quiz { max-width: 760px; }
     .quiz fieldset { border: 0; padding: 0; margin: 0 0 32px; }
     .quiz legend { font: 700 1.25rem var(--head); letter-spacing: -0.01em; padding: 0; margin-bottom: 12px; }
@@ -44,9 +44,6 @@
 
     @media (max-width: 600px) { .quiz .opts { grid-template-columns: 1fr; } }
 
-    /* ---------- Result logic ----------
-       A result shows once any 3 of the 5 answers point the same way.
-       Uses :has(), supported in all current major browsers. */
 .quiz:has(#q1-it:checked):has(#q2-it:checked):has(#q3-it:checked) .res-it,
 .quiz:has(#q1-it:checked):has(#q2-it:checked):has(#q4-it:checked) .res-it,
 .quiz:has(#q1-it:checked):has(#q2-it:checked):has(#q5-it:checked) .res-it,
