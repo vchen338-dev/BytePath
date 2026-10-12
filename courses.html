@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Courses | BytePath</title>
+  <meta name="description" content="Seventeen IT and computer science learning tracks with time estimates, topics and a mini project for each.">
+  <link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="brand" href="index.html"><img src="assets/logo-mark.svg" alt="" width="36" height="36"><span>BytePath</span></a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Open the menu">
+      <label for="nav-toggle" class="menu-btn">Menu</label>
+      <nav class="main-nav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="courses.html" aria-current="page">Courses</a>
+        <a href="roadmap.html">Roadmap</a>
+        <a href="resources.html">Resources</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-head">
+      <div class="wrap">
+        <h1>Courses</h1>
+        <p class="lead">Seventeen tracks across IT and computer science, each with a time estimate, a topic list and a mini project. Filter by subject and difficulty to find yours.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="filterable">
+          <p class="filter-label">Subject</p>
+          <input type="radio" name="subject" id="s-all" checked>
+          <label for="s-all">All</label>
+          <input type="radio" name="subject" id="s-it">
+          <label for="s-it">IT</label>
+          <input type="radio" name="subject" id="s-cs">
+          <label for="s-cs">Computer science</label>
+
+          <p class="filter-label">Level</p>
+          <input type="radio" name="level" id="f-all" checked>
+          <label for="f-all">All</label>
+          <input type="radio" name="level" id="f-beg">
+          <label for="f-beg">Beginner</label>
+          <input type="radio" name="level" id="f-int">
+          <label for="f-int">Intermediate</label>
+          <input type="radio" name="level" id="f-adv">
+          <label for="f-adv">Advanced</label>
+
+          <div class="course-grid">
+
+            <article class="card course" id="support" data-level="beginner" data-subject="it">
+              <img class="icon" src="assets/icon-support.svg" alt="">
+              <h3>IT support basics</h3>
+              <p class="meta"><span class="tag beginner">Beginner</span><span>4 weeks</span><span class="tag subj it">IT</span></p>
+              <ul>
+                <li>Hardware and peripherals</li>
+                <li>Installing and updating operating systems</li>
+                <li>A repeatable troubleshooting method</li>
+                <li>Working with support tickets</li>
+              </ul>
+              <p class="project"><strong>Mini project:</strong> Reinstall an operating system on a spare PC or virtual machine and document each step.</p>
+              <a class="more" href="resources.html#support">See resources</a>
+            </article>
+
+            <article class="card course" id="networking" data-level="beginner" data-subject="it">
+              <img class="icon" src="assets/icon-network.svg" alt="">
+              <h3>Networking fundamentals</h3>
+              <p class="meta"><span class="tag beginner">Beginner</span><span>6 weeks</span><span class="tag subj it">IT</span></p>
+              <ul>
+                <li>TCP/IP and the OSI model</li>
+                <li>IP addressing and subnetting</li>
+                <li>DNS and DHCP</li>
+                <li>Switching and routing basics</li>
+              </ul>
+              <p class="project"><strong>Mini project:</strong> Design and subnet a network for a small office with three departments.</p>
+              <a class="more" href="resources.html#networking">See resources</a>
+            </article>
+
+            <article class="card course" id="linux" data-level="beginner" data-subject="it cs">
+              <img class="icon" src="assets/icon-linux.svg" alt="">
+              <h3>Linux and the command line</h3>
+              <p class="meta"><span class="tag beginner">Beginner</span><span>5 weeks</span><span class="tag subj it">IT</span><span class="tag subj cs">Computer science</span></p>
+              <ul>
+                <li>Filesystem layout</li>
+                <li>Users and permissions</li>
+                <li>Packages and services</li>
+                <li>Bash scripting basics</li>
+              </ul>
+              <p class="project"><strong>Mini project:</strong> Set up a Linux virtual machine as a small web server.</p>
+              <a class="more" href="resources.html#linux">See resources</a>
+            </article>
+
+            <article class="card course" id="sql" data-level="beginner" data-subject="it cs">
+              <img class="icon" src="assets/icon-sql.svg" alt="">
+              <h3>Databases and SQL</h3>
+              <p class="meta"><span class="tag beginner">Beginner</span><span>4 weeks</span><span class="tag subj it">IT</span><span class="tag subj cs">Computer science</span></p>
+              <ul>
+                <li>Tables, keys and relationships</li>
+                <li>SELECT, WHERE and JOIN</li>
+                <li>Aggregates and grouping</li>
+                <li>Indexes and backups</li>
+              </ul>
+              <p class="project"><strong>Mini project:</strong> Build a small inventory database and write five useful queries.</p>
+              <a class="more" href="resources.html#sql">See resources</a>
+            </article>
+
+            <article class="card course" id="web" data-level="beginner" data-subject="it cs">
+              <img class="icon" src="assets/icon-web.svg" alt="">
+              <h3>Web development basics</h3>
+              <p class="meta"><span class="tag beginner">Beginner</span><span>6 weeks</span><span class="tag subj it">IT</span><span class="tag subj cs">Computer science</span></p>
+              <ul>
+                <li>HTML and CSS</li>
+                <li>Git and GitHub</li>
+                <li>How HTTP works</li>
+                <li>Hosting a site</li>
+              </ul>
+              <p class="project"><strong>Mini project:</strong> Build and publish a personal portfolio page.</p>
+              <a class="more" href="resources.html#web">See resources</a>
+            </article>
+
+            <article class="card course" id="python" data-level="intermediate" data-subject="it">
+              <img class="icon" src="assets/icon-python.svg" alt="">
+              <h3>Python for IT automation</h3>
+              <p class="meta"><span class="tag intermediate">Intermediate</span><span>6 weeks</span><span class="tag subj it">IT</span></p>
+              <ul>
+                <li>Syntax, loops and functions</li>
+                <li>Working with files and JSON</li>
+                <li>Calling web APIs</li>
+                <li>Scheduling scripts</li>
+              </ul>
+              <p class="project"><strong>Mini project:</strong> Write a script that backs up a folder and logs the result.</p>
+              <a class="more" href="resources.html#python">See resources</a>
+            </article>
+
+            <article class="card course" id="security" data-level="intermediate" data-subject="it cs">
+              <img class="icon" src="assets/icon-security.svg" alt="">
+              <h3>Cybersecurity fundamentals</h3>
+              <p class="meta"><span class="tag intermediate">Intermediate</span><span>8 weeks</span><span class="tag subj it">IT</span><span class="tag subj cs">Computer science</span></p>
+              <ul>
+                <li>The CIA triad and common threats</li>
+                <li>Passwords, MFA and access control</li>
+                <li>Hardening systems</li>
+                <li>Logs and detection</li>
+              </ul>
+              <p class="project"><strong>Mini project:</strong> Harden a fresh Linux virtual machine with a checklist, then verify each change.</p>
+              <a class="more" href="resources.html#security">See resources</a>
+            </article>
+
+            <article class="card course" id="cloud" data-level="intermediate" data-subject="it">
+              <img class="icon" src="assets/icon-cloud.svg" alt="">
+              <h3>Cloud essentials</h3>
+              <p class="meta"><span class="tag intermediate">Intermediate</span><span>6 weeks</span><span class="tag subj it">IT</span></p>
+              <ul>
+                <li>IaaS, PaaS and SaaS</li>
+                <li>Virtual machines and storage</li>
+                <li>Identity and permissions</li>
+                <li>Cost basics</li>
+              </ul>
+              <p class="project"><strong>Mini project:</strong> Host a static website in cloud storage and set a budget alert.</p>
+              <a class="more" href="resources.html#cloud">See resources</a>
+            </article>
+
+            <article class="card course" id="devops" data-level="advanced" data-subject="it">
+              <img class="icon" src="assets/icon-devops.svg" alt="">
+              <h3>DevOps and automation</h3>
+              <p class="meta"><span class="tag advanced">Advanced</span><span>8 weeks</span><span class="tag subj it">IT</span></p>
+              <ul>
+                <li>Git workflows</li>
+                <li>Containers with Docker</li>
+                <li>CI/CD pipelines</li>
+                <li>Infrastructure as code</li>
+              </ul>
+              <p class="project"><strong>Mini project:</strong> Containerize an app and build a pipeline that tests it on every push.</p>
+              <a class="more" href="resources.html#devops">See resources</a>
+            </article>
+
+            <article class="card course" id="programming" data-level="beginner" data-subject="cs">
+              <img class="icon cs" src="assets/icon-prog.svg" alt="">
+              <h3>Programming fundamentals</h3>
+              <p class="meta"><span class="tag beginner">Beginner</span><span>6 weeks</span><span class="tag subj cs">Computer science</span></p>
+              <ul>
+                <li>Variables, types and control flow</li>
+                <li>Functions and recursion</li>
+                <li>Debugging and testing</li>
+                <li>Reading and writing files</li>
+              </ul>
+              <p class="project"><strong>Mini project:</strong> Build a command-line to-do app that saves its data.</p>
+              <a class="more" href="resources.html#programming">See resources</a>
+            </article>
+
+            <article class="card course" id="math" data-level="beginner" data-subject="cs">
+              <img class="icon cs" src="assets/icon-math.svg" alt="">
+              <h3>Discrete math and logic</h3>
+              <p class="meta"><span class="tag beginner">Beginner</span><span>6 weeks</span><span class="tag subj cs">Computer science</span></p>
+              <ul>
+                <li>Sets, logic and proofs</li>
+                <li>Counting and probability basics</li>
+                <li>Graphs and trees</li>
+                <li>Modular arithmetic</li>
+              </ul>
+              <p class="project"><strong>Mini project:</strong> Write a program that prints truth tables for logic expressions.</p>
+              <a class="more" href="resources.html#math">See resources</a>
+            </article>
+
+            <article class="card course" id="algorithms" data-level="intermediate" data-subject="cs">
+              <img class="icon cs" src="assets/icon-algo.svg" alt="">
+              <h3>Data structures and algorithms</h3>
+              <p class="meta"><span class="tag intermediate">Intermediate</span><span>8 weeks</span><span class="tag subj cs">Computer science</span></p>
+              <ul>
+                <li>Big-O analysis</li>
+                <li>Arrays, lists and hash tables</li>
+                <li>Trees and graphs</li>
+                <li>Sorting, searching and recursion</li>
+              </ul>
+              <p class="project"><strong>Mini project:</strong> Implement a hash table and a binary search tree from scratch, with tests.</p>
+              <a class="more" href="resources.html#algorithms">See resources</a>
+            </article>
+
+            <article class="card course" id="architecture" data-level="intermediate" data-subject="cs">
+              <img class="icon cs" src="assets/icon-chip.svg" alt="">
+              <h3>Computer architecture</h3>
+              <p class="meta"><span class="tag intermediate">Intermediate</span><span>6 weeks</span><span class="tag subj cs">Computer science</span></p>
+              <ul>
+                <li>Binary and data representation</li>
+                <li>Logic gates and circuits</li>
+                <li>CPU, memory and caches</li>
+                <li>Assembly language basics</li>
+              </ul>
+              <p class="project"><strong>Mini project:</strong> Build a simple computer from logic gates in a simulator.</p>
+              <a class="more" href="resources.html#architecture">See resources</a>
+            </article>
+
+            <article class="card course" id="os" data-level="intermediate" data-subject="cs">
+              <img class="icon cs" src="assets/icon-os.svg" alt="">
+              <h3>Operating systems</h3>
+              <p class="meta"><span class="tag intermediate">Intermediate</span><span>8 weeks</span><span class="tag subj cs">Computer science</span></p>
+              <ul>
+                <li>Processes and threads</li>
+                <li>Scheduling</li>
+                <li>Memory management</li>
+                <li>File systems and concurrency</li>
+              </ul>
+              <p class="project"><strong>Mini project:</strong> Write a small Unix shell that runs programs and handles pipes.</p>
+              <a class="more" href="resources.html#os">See resources</a>
+            </article>
+
+            <article class="card course" id="engineering" data-level="intermediate" data-subject="cs">
+              <img class="icon cs" src="assets/icon-eng.svg" alt="">
+              <h3>Software engineering</h3>
+              <p class="meta"><span class="tag intermediate">Intermediate</span><span>6 weeks</span><span class="tag subj cs">Computer science</span></p>
+              <ul>
+                <li>Version control workflows</li>
+                <li>Automated testing</li>
+                <li>Code review</li>
+                <li>Design basics and refactoring</li>
+              </ul>
+              <p class="project"><strong>Mini project:</strong> Contribute a tested bug fix to an open-source project.</p>
+              <a class="more" href="resources.html#engineering">See resources</a>
+            </article>
+
+            <article class="card course" id="theory" data-level="advanced" data-subject="cs">
+              <img class="icon cs" src="assets/icon-theory.svg" alt="">
+              <h3>Theory of computation</h3>
+              <p class="meta"><span class="tag advanced">Advanced</span><span>8 weeks</span><span class="tag subj cs">Computer science</span></p>
+              <ul>
+                <li>Finite automata and regular expressions</li>
+                <li>Context-free grammars</li>
+                <li>Turing machines</li>
+                <li>Complexity classes such as P and NP</li>
+              </ul>
+              <p class="project"><strong>Mini project:</strong> Build a regular-expression matcher based on a finite automaton.</p>
+              <a class="more" href="resources.html#theory">See resources</a>
+            </article>
+
+            <article class="card course" id="ai" data-level="advanced" data-subject="cs">
+              <img class="icon cs" src="assets/icon-ai.svg" alt="">
+              <h3>AI and machine learning basics</h3>
+              <p class="meta"><span class="tag advanced">Advanced</span><span>8 weeks</span><span class="tag subj cs">Computer science</span></p>
+              <ul>
+                <li>Linear algebra and probability refresher</li>
+                <li>Supervised learning</li>
+                <li>Evaluating models</li>
+                <li>Neural network basics</li>
+              </ul>
+              <p class="project"><strong>Mini project:</strong> Train and evaluate a classifier on a public dataset, then explain its mistakes.</p>
+              <a class="more" href="resources.html#ai">See resources</a>
+            </article>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+        <h2>Want the full order?</h2>
+        <p>The roadmap shows which tracks to take first and where to specialize.</p>
+        <div class="actions">
+          <a class="btn btn-sun" href="roadmap.html">Open the roadmap</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a class="brand" href="index.html"><img src="assets/logo-mark.svg" alt="" width="36" height="36"><span>BytePath</span></a>
+          <p>A free guide to learning IT and computer science, one stop at a time.</p>
+        </div>
+        <div>
+          <h3>Learn</h3>
+          <ul>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="roadmap.html">Roadmap</a></li>
+            <li><a href="resources.html">Resources</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>BytePath</h3>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="about.html#contact">Suggest a resource</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="copy">&copy; 2026 BytePath. External links lead to third-party sites.</p>
+    </div>
+  </footer>
+</body>
+</html>

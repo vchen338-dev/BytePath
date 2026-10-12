@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About | BytePath</title>
+  <meta name="description" content="What BytePath is, how we choose resources for IT and computer science, and how to suggest one.">
+  <link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="brand" href="index.html"><img src="assets/logo-mark.svg" alt="" width="36" height="36"><span>BytePath</span></a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Open the menu">
+      <label for="nav-toggle" class="menu-btn">Menu</label>
+      <nav class="main-nav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="roadmap.html">Roadmap</a>
+        <a href="resources.html">Resources</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="about.html" aria-current="page">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-head">
+      <div class="wrap">
+        <h1>About BytePath</h1>
+        <p class="lead">BytePath is a free guide for people learning IT and computer science. It does not host courses. It puts the best existing ones in a sensible order.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap two-col">
+        <div>
+          <h2>How we choose what to include</h2>
+          <ol class="principles">
+            <li>Free to start. If a resource has a paid tier, we say so.</li>
+            <li>Hands-on. Every track ends with something you build or break yourself.</li>
+            <li>Maintained. We prefer official documentation and sources that are kept up to date.</li>
+            <li>Honest about scope. A beginner track should not need three other tracks first.</li>
+            <li>Clear about subject. Each track is tagged IT, computer science or both, so you can see where it fits.</li>
+          </ol>
+        </div>
+        <div>
+          <h2>A sample study week</h2>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th scope="col">Day</th><th scope="col">Activity</th><th scope="col">Time</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Monday</th><td>Read or watch one lesson</td><td>1 h</td></tr>
+                <tr><th scope="row">Tuesday</th><td>Hands-on lab for that lesson</td><td>1.5 h</td></tr>
+                <tr><th scope="row">Wednesday</th><td>Rest or review your notes</td><td>0.5 h</td></tr>
+                <tr><th scope="row">Thursday</th><td>Read or watch the next lesson</td><td>1 h</td></tr>
+                <tr><th scope="row">Friday</th><td>Hands-on lab</td><td>1.5 h</td></tr>
+                <tr><th scope="row">Saturday</th><td>Work on your mini project</td><td>2 h</td></tr>
+                <tr><th scope="row">Sunday</th><td>Rest</td><td>0 h</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note">That adds up to 6.5 hours. Shrink or stretch it to fit your week.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="contact">
+      <div class="wrap two-col">
+        <div>
+          <h2>Suggest a resource</h2>
+          <p class="lead">Found a great lesson, or a link that no longer works? Tell us and we will check it.</p>
+        </div>
+    
+        <form class="form" action="mailto:venzjochengalera06@example.com" method="post" enctype="text/plain">
+          <div>
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div>
+            <label for="topic">What is this about?</label>
+            <select id="topic" name="topic">
+              <option>Suggest a resource</option>
+              <option>Report a broken link</option>
+              <option>Ask a question</option>
+            </select>
+          </div>
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button class="btn" type="submit">Send message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a class="brand" href="index.html"><img src="assets/logo-mark.svg" alt="" width="36" height="36"><span>BytePath</span></a>
+          <p>A free guide to learning IT and computer science, one stop at a time.</p>
+        </div>
+        <div>
+          <h3>Learn</h3>
+          <ul>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="roadmap.html">Roadmap</a></li>
+            <li><a href="resources.html">Resources</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>BytePath</h3>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="about.html#contact">Suggest a resource</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="copy">&copy; 2026 BytePath. External links lead to third-party sites.</p>
+    </div>
+  </footer>
+</body>
+</html>
