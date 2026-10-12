@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="#6D3BE0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Git branch icon">
+  <path d="M14 16V32"/>
+  <path d="M34 24C34 30 28 30 20 32L15 34"/>
+  <circle cx="14" cy="12" r="4.5" fill="#fff"/>
+  <circle cx="14" cy="36" r="4.5" fill="#FFC736"/>
+  <circle cx="34" cy="20" r="4.5" fill="#fff"/>
+</svg>

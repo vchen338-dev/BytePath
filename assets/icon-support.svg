@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="#2450E0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Monitor icon">
+  <rect x="6" y="8" width="36" height="24" rx="3"/>
+  <path d="M18 40H30M24 32V40"/>
+  <circle cx="24" cy="20" r="3.5" fill="#FFC736" stroke="none"/>
+</svg>

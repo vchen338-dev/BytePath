@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="#2450E0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Database icon">
+  <ellipse cx="24" cy="12" rx="14" ry="5" fill="#FFC736" fill-opacity="0.55"/>
+  <path d="M10 12V36C10 39 16 42 24 42S38 39 38 36V12"/>
+  <path d="M10 24C10 27 16 30 24 30S38 27 38 24"/>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="#6D3BE0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Neural network icon">
+  <path d="M10 14L24 18M10 14L24 30M10 24L24 18M10 24L24 30M10 34L24 18M10 34L24 30M24 18L38 24M24 30L38 24"/>
+  <g stroke-width="2.6">
+    <circle cx="10" cy="14" r="4" fill="#fff"/>
+    <circle cx="10" cy="24" r="4" fill="#fff"/>
+    <circle cx="10" cy="34" r="4" fill="#fff"/>
+    <circle cx="24" cy="18" r="4" fill="#fff"/>
+    <circle cx="24" cy="30" r="4" fill="#fff"/>
+    <circle cx="38" cy="24" r="4.5" fill="#FFC736"/>
+  </g>
+</svg>

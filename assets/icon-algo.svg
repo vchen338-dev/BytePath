@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="#6D3BE0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Tree structure icon">
+  <path d="M24 13L14 27M24 13L34 27M14 27L9 37M14 27L19 37"/>
+  <circle cx="24" cy="10" r="4.5" fill="#FFC736"/>
+  <circle cx="14" cy="27" r="4.5" fill="#fff"/>
+  <circle cx="34" cy="27" r="4.5" fill="#fff"/>
+  <circle cx="9" cy="39" r="3.5" fill="#fff"/>
+  <circle cx="19" cy="39" r="3.5" fill="#fff"/>
+</svg>
