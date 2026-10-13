@@ -99,3 +99,7 @@ Modern browsers. The quiz needs `:has()` (Chrome and Edge 105+, Safari 15.4+, Fi
 The site is deployed on Vercel at https://byte-path.vercel.app. It needs no build settings: Vercel serves the folder as a static site. To update it, redeploy the changed files (or push to the connected Git repository).
 
 It also works on any other static host: GitHub Pages, Netlify, Cloudflare Pages or plain web hosting.
+
+## License
+
+Released under the [MIT License](LICENSE). External courses and sites linked from BytePath belong to their owners.
