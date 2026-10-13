@@ -468,3 +468,13 @@ html.js .theme-toggle { display: inline-flex; }
 }
 :root[data-theme="dark"] .hero-art .map-light { display: none; }
 :root[data-theme="dark"] .hero-art .map-dark { display: block; }
+
+.form-status {
+  margin: 0; padding: 12px 16px; border-radius: 10px;
+  font-weight: 600; border: 1px solid transparent;
+}
+.form-status:empty { display: none; }
+.form-status.ok { background: var(--tag-beg-bg); color: var(--tag-beg-fg); border-color: var(--tag-beg-fg); }
+.form-status.error { background: var(--tag-adv-bg); color: var(--tag-adv-fg); border-color: var(--tag-adv-fg); }
+
+.form button:disabled { opacity: 0.6; cursor: wait; }
