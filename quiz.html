@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
   <title>Which path fits you? | BytePath</title>
-  <meta name="description" content="A five-question quiz that points you to the IT path or the computer science path.">
+  <meta name="description" content="A five-question quiz that points you to the IT, computer science or information systems path.">
   <link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,11 +13,11 @@
   <link rel="stylesheet" href="css/style.css">
   <script src="js/theme.js"></script>
   <style>
-
+    /* ---------- Quiz (HTML + CSS only) ---------- */
     .quiz { max-width: 760px; }
     .quiz fieldset { border: 0; padding: 0; margin: 0 0 32px; }
     .quiz legend { font: 700 1.25rem var(--head); letter-spacing: -0.01em; padding: 0; margin-bottom: 12px; }
-    .quiz .opts { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .quiz .opts { position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
     .quiz input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
     .quiz .opts label {
       display: block; cursor: pointer; font-weight: 600; padding: 16px 18px;
@@ -33,17 +33,27 @@
       border: 1px solid var(--line); border-top: 8px solid var(--blue); border-radius: var(--radius);
     }
     .quiz .res-cs { border-top-color: var(--violet); }
+    .quiz .res-is { border-top-color: var(--teal); }
+    .quiz .res-mix { border-top-color: var(--mint); }
     .quiz .result h2 { font-size: 1.8rem; }
     .quiz .result p { color: var(--muted); }
     .quiz .res-cs .btn { background: var(--violet); border-color: var(--violet); }
     .quiz .res-cs .btn:hover { background: var(--violet-deep); border-color: var(--violet-deep); }
     .quiz .res-cs .btn-ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
     .quiz .res-cs .btn-ghost:hover { background: var(--ink); border-color: var(--ink); color: var(--on-ink); }
+    .quiz .res-is .btn { background: var(--teal); border-color: var(--teal); }
+    .quiz .res-is .btn:hover { background: var(--teal-deep); border-color: var(--teal-deep); }
+    .quiz .res-is .btn-ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+    .quiz .res-is .btn-ghost:hover { background: var(--ink); border-color: var(--ink); color: var(--on-ink); }
     .quiz .again { margin-top: 24px; }
     .quiz .again button { cursor: pointer; }
 
-    @media (max-width: 600px) { .quiz .opts { grid-template-columns: 1fr; } }
 
+    /* ---------- Result logic ----------
+       Each question gives one point to IT, computer science or information systems.
+       A result shows once any 3 answers point the same way (a majority).
+       If all 5 are answered and no subject has 3, the split is 2-2-1 and a "between two" result shows.
+       Uses :has(), supported in all current major browsers. */
 .quiz:has(#q1-it:checked):has(#q2-it:checked):has(#q3-it:checked) .res-it,
 .quiz:has(#q1-it:checked):has(#q2-it:checked):has(#q4-it:checked) .res-it,
 .quiz:has(#q1-it:checked):has(#q2-it:checked):has(#q5-it:checked) .res-it,
@@ -68,6 +78,114 @@
 .quiz:has(#q3-cs:checked):has(#q4-cs:checked):has(#q5-cs:checked) .res-cs {
   display: block;
 }
+.quiz:has(#q1-is:checked):has(#q2-is:checked):has(#q3-is:checked) .res-is,
+.quiz:has(#q1-is:checked):has(#q2-is:checked):has(#q4-is:checked) .res-is,
+.quiz:has(#q1-is:checked):has(#q2-is:checked):has(#q5-is:checked) .res-is,
+.quiz:has(#q1-is:checked):has(#q3-is:checked):has(#q4-is:checked) .res-is,
+.quiz:has(#q1-is:checked):has(#q3-is:checked):has(#q5-is:checked) .res-is,
+.quiz:has(#q1-is:checked):has(#q4-is:checked):has(#q5-is:checked) .res-is,
+.quiz:has(#q2-is:checked):has(#q3-is:checked):has(#q4-is:checked) .res-is,
+.quiz:has(#q2-is:checked):has(#q3-is:checked):has(#q5-is:checked) .res-is,
+.quiz:has(#q2-is:checked):has(#q4-is:checked):has(#q5-is:checked) .res-is,
+.quiz:has(#q3-is:checked):has(#q4-is:checked):has(#q5-is:checked) .res-is {
+  display: block;
+}
+.quiz:has(#q1-is:checked):has(#q2-it:checked):has(#q3-it:checked):has(#q4-cs:checked):has(#q5-cs:checked) .res-it-cs,
+.quiz:has(#q1-is:checked):has(#q2-it:checked):has(#q4-it:checked):has(#q3-cs:checked):has(#q5-cs:checked) .res-it-cs,
+.quiz:has(#q1-is:checked):has(#q2-it:checked):has(#q5-it:checked):has(#q3-cs:checked):has(#q4-cs:checked) .res-it-cs,
+.quiz:has(#q1-is:checked):has(#q3-it:checked):has(#q4-it:checked):has(#q2-cs:checked):has(#q5-cs:checked) .res-it-cs,
+.quiz:has(#q1-is:checked):has(#q3-it:checked):has(#q5-it:checked):has(#q2-cs:checked):has(#q4-cs:checked) .res-it-cs,
+.quiz:has(#q1-is:checked):has(#q4-it:checked):has(#q5-it:checked):has(#q2-cs:checked):has(#q3-cs:checked) .res-it-cs,
+.quiz:has(#q2-is:checked):has(#q1-it:checked):has(#q3-it:checked):has(#q4-cs:checked):has(#q5-cs:checked) .res-it-cs,
+.quiz:has(#q2-is:checked):has(#q1-it:checked):has(#q4-it:checked):has(#q3-cs:checked):has(#q5-cs:checked) .res-it-cs,
+.quiz:has(#q2-is:checked):has(#q1-it:checked):has(#q5-it:checked):has(#q3-cs:checked):has(#q4-cs:checked) .res-it-cs,
+.quiz:has(#q2-is:checked):has(#q3-it:checked):has(#q4-it:checked):has(#q1-cs:checked):has(#q5-cs:checked) .res-it-cs,
+.quiz:has(#q2-is:checked):has(#q3-it:checked):has(#q5-it:checked):has(#q1-cs:checked):has(#q4-cs:checked) .res-it-cs,
+.quiz:has(#q2-is:checked):has(#q4-it:checked):has(#q5-it:checked):has(#q1-cs:checked):has(#q3-cs:checked) .res-it-cs,
+.quiz:has(#q3-is:checked):has(#q1-it:checked):has(#q2-it:checked):has(#q4-cs:checked):has(#q5-cs:checked) .res-it-cs,
+.quiz:has(#q3-is:checked):has(#q1-it:checked):has(#q4-it:checked):has(#q2-cs:checked):has(#q5-cs:checked) .res-it-cs,
+.quiz:has(#q3-is:checked):has(#q1-it:checked):has(#q5-it:checked):has(#q2-cs:checked):has(#q4-cs:checked) .res-it-cs,
+.quiz:has(#q3-is:checked):has(#q2-it:checked):has(#q4-it:checked):has(#q1-cs:checked):has(#q5-cs:checked) .res-it-cs,
+.quiz:has(#q3-is:checked):has(#q2-it:checked):has(#q5-it:checked):has(#q1-cs:checked):has(#q4-cs:checked) .res-it-cs,
+.quiz:has(#q3-is:checked):has(#q4-it:checked):has(#q5-it:checked):has(#q1-cs:checked):has(#q2-cs:checked) .res-it-cs,
+.quiz:has(#q4-is:checked):has(#q1-it:checked):has(#q2-it:checked):has(#q3-cs:checked):has(#q5-cs:checked) .res-it-cs,
+.quiz:has(#q4-is:checked):has(#q1-it:checked):has(#q3-it:checked):has(#q2-cs:checked):has(#q5-cs:checked) .res-it-cs,
+.quiz:has(#q4-is:checked):has(#q1-it:checked):has(#q5-it:checked):has(#q2-cs:checked):has(#q3-cs:checked) .res-it-cs,
+.quiz:has(#q4-is:checked):has(#q2-it:checked):has(#q3-it:checked):has(#q1-cs:checked):has(#q5-cs:checked) .res-it-cs,
+.quiz:has(#q4-is:checked):has(#q2-it:checked):has(#q5-it:checked):has(#q1-cs:checked):has(#q3-cs:checked) .res-it-cs,
+.quiz:has(#q4-is:checked):has(#q3-it:checked):has(#q5-it:checked):has(#q1-cs:checked):has(#q2-cs:checked) .res-it-cs,
+.quiz:has(#q5-is:checked):has(#q1-it:checked):has(#q2-it:checked):has(#q3-cs:checked):has(#q4-cs:checked) .res-it-cs,
+.quiz:has(#q5-is:checked):has(#q1-it:checked):has(#q3-it:checked):has(#q2-cs:checked):has(#q4-cs:checked) .res-it-cs,
+.quiz:has(#q5-is:checked):has(#q1-it:checked):has(#q4-it:checked):has(#q2-cs:checked):has(#q3-cs:checked) .res-it-cs,
+.quiz:has(#q5-is:checked):has(#q2-it:checked):has(#q3-it:checked):has(#q1-cs:checked):has(#q4-cs:checked) .res-it-cs,
+.quiz:has(#q5-is:checked):has(#q2-it:checked):has(#q4-it:checked):has(#q1-cs:checked):has(#q3-cs:checked) .res-it-cs,
+.quiz:has(#q5-is:checked):has(#q3-it:checked):has(#q4-it:checked):has(#q1-cs:checked):has(#q2-cs:checked) .res-it-cs {
+  display: block;
+}
+.quiz:has(#q1-cs:checked):has(#q2-it:checked):has(#q3-it:checked):has(#q4-is:checked):has(#q5-is:checked) .res-it-is,
+.quiz:has(#q1-cs:checked):has(#q2-it:checked):has(#q4-it:checked):has(#q3-is:checked):has(#q5-is:checked) .res-it-is,
+.quiz:has(#q1-cs:checked):has(#q2-it:checked):has(#q5-it:checked):has(#q3-is:checked):has(#q4-is:checked) .res-it-is,
+.quiz:has(#q1-cs:checked):has(#q3-it:checked):has(#q4-it:checked):has(#q2-is:checked):has(#q5-is:checked) .res-it-is,
+.quiz:has(#q1-cs:checked):has(#q3-it:checked):has(#q5-it:checked):has(#q2-is:checked):has(#q4-is:checked) .res-it-is,
+.quiz:has(#q1-cs:checked):has(#q4-it:checked):has(#q5-it:checked):has(#q2-is:checked):has(#q3-is:checked) .res-it-is,
+.quiz:has(#q2-cs:checked):has(#q1-it:checked):has(#q3-it:checked):has(#q4-is:checked):has(#q5-is:checked) .res-it-is,
+.quiz:has(#q2-cs:checked):has(#q1-it:checked):has(#q4-it:checked):has(#q3-is:checked):has(#q5-is:checked) .res-it-is,
+.quiz:has(#q2-cs:checked):has(#q1-it:checked):has(#q5-it:checked):has(#q3-is:checked):has(#q4-is:checked) .res-it-is,
+.quiz:has(#q2-cs:checked):has(#q3-it:checked):has(#q4-it:checked):has(#q1-is:checked):has(#q5-is:checked) .res-it-is,
+.quiz:has(#q2-cs:checked):has(#q3-it:checked):has(#q5-it:checked):has(#q1-is:checked):has(#q4-is:checked) .res-it-is,
+.quiz:has(#q2-cs:checked):has(#q4-it:checked):has(#q5-it:checked):has(#q1-is:checked):has(#q3-is:checked) .res-it-is,
+.quiz:has(#q3-cs:checked):has(#q1-it:checked):has(#q2-it:checked):has(#q4-is:checked):has(#q5-is:checked) .res-it-is,
+.quiz:has(#q3-cs:checked):has(#q1-it:checked):has(#q4-it:checked):has(#q2-is:checked):has(#q5-is:checked) .res-it-is,
+.quiz:has(#q3-cs:checked):has(#q1-it:checked):has(#q5-it:checked):has(#q2-is:checked):has(#q4-is:checked) .res-it-is,
+.quiz:has(#q3-cs:checked):has(#q2-it:checked):has(#q4-it:checked):has(#q1-is:checked):has(#q5-is:checked) .res-it-is,
+.quiz:has(#q3-cs:checked):has(#q2-it:checked):has(#q5-it:checked):has(#q1-is:checked):has(#q4-is:checked) .res-it-is,
+.quiz:has(#q3-cs:checked):has(#q4-it:checked):has(#q5-it:checked):has(#q1-is:checked):has(#q2-is:checked) .res-it-is,
+.quiz:has(#q4-cs:checked):has(#q1-it:checked):has(#q2-it:checked):has(#q3-is:checked):has(#q5-is:checked) .res-it-is,
+.quiz:has(#q4-cs:checked):has(#q1-it:checked):has(#q3-it:checked):has(#q2-is:checked):has(#q5-is:checked) .res-it-is,
+.quiz:has(#q4-cs:checked):has(#q1-it:checked):has(#q5-it:checked):has(#q2-is:checked):has(#q3-is:checked) .res-it-is,
+.quiz:has(#q4-cs:checked):has(#q2-it:checked):has(#q3-it:checked):has(#q1-is:checked):has(#q5-is:checked) .res-it-is,
+.quiz:has(#q4-cs:checked):has(#q2-it:checked):has(#q5-it:checked):has(#q1-is:checked):has(#q3-is:checked) .res-it-is,
+.quiz:has(#q4-cs:checked):has(#q3-it:checked):has(#q5-it:checked):has(#q1-is:checked):has(#q2-is:checked) .res-it-is,
+.quiz:has(#q5-cs:checked):has(#q1-it:checked):has(#q2-it:checked):has(#q3-is:checked):has(#q4-is:checked) .res-it-is,
+.quiz:has(#q5-cs:checked):has(#q1-it:checked):has(#q3-it:checked):has(#q2-is:checked):has(#q4-is:checked) .res-it-is,
+.quiz:has(#q5-cs:checked):has(#q1-it:checked):has(#q4-it:checked):has(#q2-is:checked):has(#q3-is:checked) .res-it-is,
+.quiz:has(#q5-cs:checked):has(#q2-it:checked):has(#q3-it:checked):has(#q1-is:checked):has(#q4-is:checked) .res-it-is,
+.quiz:has(#q5-cs:checked):has(#q2-it:checked):has(#q4-it:checked):has(#q1-is:checked):has(#q3-is:checked) .res-it-is,
+.quiz:has(#q5-cs:checked):has(#q3-it:checked):has(#q4-it:checked):has(#q1-is:checked):has(#q2-is:checked) .res-it-is {
+  display: block;
+}
+.quiz:has(#q1-it:checked):has(#q2-cs:checked):has(#q3-cs:checked):has(#q4-is:checked):has(#q5-is:checked) .res-cs-is,
+.quiz:has(#q1-it:checked):has(#q2-cs:checked):has(#q4-cs:checked):has(#q3-is:checked):has(#q5-is:checked) .res-cs-is,
+.quiz:has(#q1-it:checked):has(#q2-cs:checked):has(#q5-cs:checked):has(#q3-is:checked):has(#q4-is:checked) .res-cs-is,
+.quiz:has(#q1-it:checked):has(#q3-cs:checked):has(#q4-cs:checked):has(#q2-is:checked):has(#q5-is:checked) .res-cs-is,
+.quiz:has(#q1-it:checked):has(#q3-cs:checked):has(#q5-cs:checked):has(#q2-is:checked):has(#q4-is:checked) .res-cs-is,
+.quiz:has(#q1-it:checked):has(#q4-cs:checked):has(#q5-cs:checked):has(#q2-is:checked):has(#q3-is:checked) .res-cs-is,
+.quiz:has(#q2-it:checked):has(#q1-cs:checked):has(#q3-cs:checked):has(#q4-is:checked):has(#q5-is:checked) .res-cs-is,
+.quiz:has(#q2-it:checked):has(#q1-cs:checked):has(#q4-cs:checked):has(#q3-is:checked):has(#q5-is:checked) .res-cs-is,
+.quiz:has(#q2-it:checked):has(#q1-cs:checked):has(#q5-cs:checked):has(#q3-is:checked):has(#q4-is:checked) .res-cs-is,
+.quiz:has(#q2-it:checked):has(#q3-cs:checked):has(#q4-cs:checked):has(#q1-is:checked):has(#q5-is:checked) .res-cs-is,
+.quiz:has(#q2-it:checked):has(#q3-cs:checked):has(#q5-cs:checked):has(#q1-is:checked):has(#q4-is:checked) .res-cs-is,
+.quiz:has(#q2-it:checked):has(#q4-cs:checked):has(#q5-cs:checked):has(#q1-is:checked):has(#q3-is:checked) .res-cs-is,
+.quiz:has(#q3-it:checked):has(#q1-cs:checked):has(#q2-cs:checked):has(#q4-is:checked):has(#q5-is:checked) .res-cs-is,
+.quiz:has(#q3-it:checked):has(#q1-cs:checked):has(#q4-cs:checked):has(#q2-is:checked):has(#q5-is:checked) .res-cs-is,
+.quiz:has(#q3-it:checked):has(#q1-cs:checked):has(#q5-cs:checked):has(#q2-is:checked):has(#q4-is:checked) .res-cs-is,
+.quiz:has(#q3-it:checked):has(#q2-cs:checked):has(#q4-cs:checked):has(#q1-is:checked):has(#q5-is:checked) .res-cs-is,
+.quiz:has(#q3-it:checked):has(#q2-cs:checked):has(#q5-cs:checked):has(#q1-is:checked):has(#q4-is:checked) .res-cs-is,
+.quiz:has(#q3-it:checked):has(#q4-cs:checked):has(#q5-cs:checked):has(#q1-is:checked):has(#q2-is:checked) .res-cs-is,
+.quiz:has(#q4-it:checked):has(#q1-cs:checked):has(#q2-cs:checked):has(#q3-is:checked):has(#q5-is:checked) .res-cs-is,
+.quiz:has(#q4-it:checked):has(#q1-cs:checked):has(#q3-cs:checked):has(#q2-is:checked):has(#q5-is:checked) .res-cs-is,
+.quiz:has(#q4-it:checked):has(#q1-cs:checked):has(#q5-cs:checked):has(#q2-is:checked):has(#q3-is:checked) .res-cs-is,
+.quiz:has(#q4-it:checked):has(#q2-cs:checked):has(#q3-cs:checked):has(#q1-is:checked):has(#q5-is:checked) .res-cs-is,
+.quiz:has(#q4-it:checked):has(#q2-cs:checked):has(#q5-cs:checked):has(#q1-is:checked):has(#q3-is:checked) .res-cs-is,
+.quiz:has(#q4-it:checked):has(#q3-cs:checked):has(#q5-cs:checked):has(#q1-is:checked):has(#q2-is:checked) .res-cs-is,
+.quiz:has(#q5-it:checked):has(#q1-cs:checked):has(#q2-cs:checked):has(#q3-is:checked):has(#q4-is:checked) .res-cs-is,
+.quiz:has(#q5-it:checked):has(#q1-cs:checked):has(#q3-cs:checked):has(#q2-is:checked):has(#q4-is:checked) .res-cs-is,
+.quiz:has(#q5-it:checked):has(#q1-cs:checked):has(#q4-cs:checked):has(#q2-is:checked):has(#q3-is:checked) .res-cs-is,
+.quiz:has(#q5-it:checked):has(#q2-cs:checked):has(#q3-cs:checked):has(#q1-is:checked):has(#q4-is:checked) .res-cs-is,
+.quiz:has(#q5-it:checked):has(#q2-cs:checked):has(#q4-cs:checked):has(#q1-is:checked):has(#q3-is:checked) .res-cs-is,
+.quiz:has(#q5-it:checked):has(#q3-cs:checked):has(#q4-cs:checked):has(#q1-is:checked):has(#q2-is:checked) .res-cs-is {
+  display: block;
+}
 .quiz:has(#q1-it:checked):has(#q2-it:checked):has(#q3-it:checked) .pending,
 .quiz:has(#q1-it:checked):has(#q2-it:checked):has(#q4-it:checked) .pending,
 .quiz:has(#q1-it:checked):has(#q2-it:checked):has(#q5-it:checked) .pending,
@@ -87,7 +205,18 @@
 .quiz:has(#q2-cs:checked):has(#q3-cs:checked):has(#q4-cs:checked) .pending,
 .quiz:has(#q2-cs:checked):has(#q3-cs:checked):has(#q5-cs:checked) .pending,
 .quiz:has(#q2-cs:checked):has(#q4-cs:checked):has(#q5-cs:checked) .pending,
-.quiz:has(#q3-cs:checked):has(#q4-cs:checked):has(#q5-cs:checked) .pending {
+.quiz:has(#q3-cs:checked):has(#q4-cs:checked):has(#q5-cs:checked) .pending,
+.quiz:has(#q1-is:checked):has(#q2-is:checked):has(#q3-is:checked) .pending,
+.quiz:has(#q1-is:checked):has(#q2-is:checked):has(#q4-is:checked) .pending,
+.quiz:has(#q1-is:checked):has(#q2-is:checked):has(#q5-is:checked) .pending,
+.quiz:has(#q1-is:checked):has(#q3-is:checked):has(#q4-is:checked) .pending,
+.quiz:has(#q1-is:checked):has(#q3-is:checked):has(#q5-is:checked) .pending,
+.quiz:has(#q1-is:checked):has(#q4-is:checked):has(#q5-is:checked) .pending,
+.quiz:has(#q2-is:checked):has(#q3-is:checked):has(#q4-is:checked) .pending,
+.quiz:has(#q2-is:checked):has(#q3-is:checked):has(#q5-is:checked) .pending,
+.quiz:has(#q2-is:checked):has(#q4-is:checked):has(#q5-is:checked) .pending,
+.quiz:has(#q3-is:checked):has(#q4-is:checked):has(#q5-is:checked) .pending,
+.quiz:has(input[name="q1"]:checked):has(input[name="q2"]:checked):has(input[name="q3"]:checked):has(input[name="q4"]:checked):has(input[name="q5"]:checked) .pending {
   display: none;
 }
   </style>
@@ -119,7 +248,7 @@
     <section class="page-head">
       <div class="wrap">
         <h1>Which path fits you?</h1>
-        <p class="lead">Five quick questions. Pick the answer that sounds more like you, and we will point you to IT or computer science.</p>
+        <p class="lead">Five quick questions. Pick the answer that sounds most like you, and we will point you to IT, computer science or information systems.</p>
       </div>
     </section>
 
@@ -134,6 +263,8 @@
         <label for="q1-it">Getting a network or server running so everything just works</label>
         <input type="radio" name="q1" id="q1-cs">
         <label for="q1-cs">Finding a clever way to solve a puzzle with code</label>
+        <input type="radio" name="q1" id="q1-is">
+        <label for="q1-is">Working out how a business could run better with the right software</label>
         </div>
       </fieldset>
 
@@ -142,14 +273,18 @@
         <div class="opts">
         <input type="radio" name="q2" id="q2-cs">
         <label for="q2-cs">Build a small game or app from scratch</label>
+        <input type="radio" name="q2" id="q2-is">
+        <label for="q2-is">Map how a shop takes orders and design a system to track them</label>
         <input type="radio" name="q2" id="q2-it">
         <label for="q2-it">Fix and secure the computers in a small office</label>
         </div>
       </fieldset>
 
       <fieldset>
-        <legend>3. How do you feel about math?</legend>
+        <legend>3. How do you feel about numbers and math?</legend>
         <div class="opts">
+        <input type="radio" name="q3" id="q3-is">
+        <label for="q3-is">I like numbers when they answer a business question, such as sales or costs</label>
         <input type="radio" name="q3" id="q3-it">
         <label for="q3-it">Fine, as long as I only need it now and then</label>
         <input type="radio" name="q3" id="q3-cs">
@@ -164,6 +299,8 @@
         <label for="q4-cs">Why is this algorithm so slow?</label>
         <input type="radio" name="q4" id="q4-it">
         <label for="q4-it">Why can't this computer connect to the network?</label>
+        <input type="radio" name="q4" id="q4-is">
+        <label for="q4-is">Why does our team type the same data into three places?</label>
         </div>
       </fieldset>
 
@@ -172,12 +309,14 @@
         <div class="opts">
         <input type="radio" name="q5" id="q5-it">
         <label for="q5-it">Running systems or cloud services for a company</label>
+        <input type="radio" name="q5" id="q5-is">
+        <label for="q5-is">Working between business teams and technical teams as an analyst or consultant</label>
         <input type="radio" name="q5" id="q5-cs">
         <label for="q5-cs">Developing software or doing research</label>
         </div>
       </fieldset>
 
-          <p class="pending" role="status">Your result appears once three of your answers point the same way.</p>
+          <p class="pending" role="status">Your result appears once three of your answers point the same way, or when you have answered all five.</p>
 
           <div class="result res-it" role="status">
             <h2>You lean toward IT</h2>
@@ -197,11 +336,47 @@
             </div>
           </div>
 
+          <div class="result res-is" role="status">
+            <h2>You lean toward information systems</h2>
+            <p>You like connecting what a business needs with what technology can do. Start with business analysis, then learn databases and systems design before choosing ERP, analytics or project management.</p>
+            <div class="actions">
+              <a class="btn" href="roadmap.html#is-path">See the information systems path</a>
+              <a class="btn btn-ghost" href="courses.html">Browse all tracks</a>
+            </div>
+          </div>
+
+          <div class="result res-mix res-it-cs" role="status">
+            <h2>You sit between IT and computer science</h2>
+            <p>Your answers split evenly, which is common. Tracks tagged with both, such as Linux, SQL and web development, let you try each side before you commit.</p>
+            <div class="actions">
+              <a class="btn" href="roadmap.html#it-path">See the IT path</a>
+              <a class="btn btn-ghost" href="roadmap.html#cs-path">See the computer science path</a>
+            </div>
+          </div>
+
+          <div class="result res-mix res-it-is" role="status">
+            <h2>You sit between IT and information systems</h2>
+            <p>Your answers split evenly, which is common. SQL, cybersecurity and IT project management belong to both, so they are a good place to start and see which side you enjoy.</p>
+            <div class="actions">
+              <a class="btn" href="roadmap.html#it-path">See the IT path</a>
+              <a class="btn btn-ghost" href="roadmap.html#is-path">See the information systems path</a>
+            </div>
+          </div>
+
+          <div class="result res-mix res-cs-is" role="status">
+            <h2>You sit between computer science and information systems</h2>
+            <p>Your answers split evenly, which is common. Databases and SQL, data modeling and data analytics belong to both, so they are a good place to start.</p>
+            <div class="actions">
+              <a class="btn" href="roadmap.html#cs-path">See the computer science path</a>
+              <a class="btn btn-ghost" href="roadmap.html#is-path">See the information systems path</a>
+            </div>
+          </div>
+
           <div class="again">
             <button class="btn btn-ghost" type="reset">Start over</button>
           </div>
         </form>
-        <p class="note">Tracks tagged with both subjects, such as Linux, SQL and web development, are a good way to try the other side.</p>
+        <p class="note">Tracks tagged with more than one subject, such as Linux, SQL and web development, are a good way to try another side.</p>
       </div>
     </section>
   </main>
@@ -211,7 +386,7 @@
       <div class="foot-grid">
         <div>
           <a class="brand" href="index.html"><img src="assets/logo-mark.svg" alt="" width="36" height="36"><span>BytePath</span></a>
-          <p>A free guide to learning IT and computer science, one stop at a time.</p>
+          <p>A free guide to learning IT, computer science and information systems, one stop at a time.</p>
         </div>
         <div>
           <h3>Learn</h3>

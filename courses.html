@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
   <title>Courses | BytePath</title>
-  <meta name="description" content="Seventeen IT and computer science learning tracks with time estimates, topics and a mini project for each.">
+  <meta name="description" content="Twenty-three IT, computer science and information systems learning tracks with time estimates, topics and a mini project for each.">
   <link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,7 +40,7 @@
     <section class="page-head">
       <div class="wrap">
         <h1>Courses</h1>
-        <p class="lead">Seventeen tracks across IT and computer science, each with a time estimate, a topic list and a mini project. Filter by subject and difficulty to find yours.</p>
+        <p class="lead">Twenty-three tracks across IT, computer science and information systems, each with a time estimate, a topic list and a mini project. Filter by subject and difficulty to find yours.</p>
       </div>
     </section>
 
@@ -54,6 +54,8 @@
           <label for="s-it">IT</label>
           <input type="radio" name="subject" id="s-cs">
           <label for="s-cs">Computer science</label>
+          <input type="radio" name="subject" id="s-is">
+          <label for="s-is">Information systems</label>
 
           <p class="filter-label">Level</p>
           <input type="radio" name="level" id="f-all" checked>
@@ -109,10 +111,10 @@
               <a class="more" href="resources.html#linux">See resources</a>
             </article>
 
-            <article class="card course" id="sql" data-level="beginner" data-subject="it cs">
+            <article class="card course" id="sql" data-level="beginner" data-subject="it cs is">
               <img class="icon" src="assets/icon-sql.svg" alt="">
               <h3>Databases and SQL</h3>
-              <p class="meta"><span class="tag beginner">Beginner</span><span>4 weeks</span><span class="tag subj it">IT</span><span class="tag subj cs">Computer science</span></p>
+              <p class="meta"><span class="tag beginner">Beginner</span><span>4 weeks</span><span class="tag subj it">IT</span><span class="tag subj cs">Computer science</span><span class="tag subj is">Information systems</span></p>
               <ul>
                 <li>Tables, keys and relationships</li>
                 <li>SELECT, WHERE and JOIN</li>
@@ -151,10 +153,10 @@
               <a class="more" href="resources.html#python">See resources</a>
             </article>
 
-            <article class="card course" id="security" data-level="intermediate" data-subject="it cs">
+            <article class="card course" id="security" data-level="intermediate" data-subject="it cs is">
               <img class="icon" src="assets/icon-security.svg" alt="">
               <h3>Cybersecurity fundamentals</h3>
-              <p class="meta"><span class="tag intermediate">Intermediate</span><span>8 weeks</span><span class="tag subj it">IT</span><span class="tag subj cs">Computer science</span></p>
+              <p class="meta"><span class="tag intermediate">Intermediate</span><span>8 weeks</span><span class="tag subj it">IT</span><span class="tag subj cs">Computer science</span><span class="tag subj is">Information systems</span></p>
               <ul>
                 <li>The CIA triad and common threats</li>
                 <li>Passwords, MFA and access control</li>
@@ -305,6 +307,90 @@
               <a class="more" href="resources.html#ai">See resources</a>
             </article>
 
+            <article class="card course" id="ba" data-level="beginner" data-subject="is">
+              <img class="icon is" src="assets/icon-ba.svg" alt="">
+              <h3>Business analysis basics</h3>
+              <p class="meta"><span class="tag beginner">Beginner</span><span>5 weeks</span><span class="tag subj is">Information systems</span></p>
+              <ul>
+                <li>What a business analyst does</li>
+                <li>Gathering requirements with interviews and workshops</li>
+                <li>User stories and acceptance criteria</li>
+                <li>Process maps with BPMN</li>
+              </ul>
+              <p class="project"><strong>Mini project:</strong> Interview a classmate or small business owner and write a one-page requirements document.</p>
+              <a class="more" href="resources.html#ba">See resources</a>
+            </article>
+
+            <article class="card course" id="sad" data-level="intermediate" data-subject="is">
+              <img class="icon is" src="assets/icon-sad.svg" alt="">
+              <h3>Systems analysis and design</h3>
+              <p class="meta"><span class="tag intermediate">Intermediate</span><span>6 weeks</span><span class="tag subj is">Information systems</span></p>
+              <ul>
+                <li>The systems development life cycle</li>
+                <li>Use cases and UML diagrams</li>
+                <li>Waterfall, agile and when to use each</li>
+                <li>Testing and rollout planning</li>
+              </ul>
+              <p class="project"><strong>Mini project:</strong> Design a simple order-tracking system for a caf&eacute; with use-case and class diagrams.</p>
+              <a class="more" href="resources.html#sad">See resources</a>
+            </article>
+
+            <article class="card course" id="model" data-level="intermediate" data-subject="cs is">
+              <img class="icon is" src="assets/icon-model.svg" alt="">
+              <h3>Data modeling and database design</h3>
+              <p class="meta"><span class="tag intermediate">Intermediate</span><span>5 weeks</span><span class="tag subj cs">Computer science</span><span class="tag subj is">Information systems</span></p>
+              <ul>
+                <li>Entities, attributes and relationships</li>
+                <li>Entity-relationship diagrams</li>
+                <li>Normalization to third normal form</li>
+                <li>Turning a model into tables</li>
+              </ul>
+              <p class="project"><strong>Mini project:</strong> Model a library's members and loans, then build it in SQLite or PostgreSQL.</p>
+              <a class="more" href="resources.html#model">See resources</a>
+            </article>
+
+            <article class="card course" id="erp" data-level="intermediate" data-subject="is">
+              <img class="icon is" src="assets/icon-erp.svg" alt="">
+              <h3>ERP and business processes</h3>
+              <p class="meta"><span class="tag intermediate">Intermediate</span><span>6 weeks</span><span class="tag subj is">Information systems</span></p>
+              <ul>
+                <li>Order-to-cash and procure-to-pay</li>
+                <li>Modules for finance, inventory, sales and HR</li>
+                <li>Master data and configuration</li>
+                <li>Reports and approval workflows</li>
+              </ul>
+              <p class="project"><strong>Mini project:</strong> Set up a demo company in a free ERP such as Odoo or ERPNext and run one sale from quote to invoice.</p>
+              <a class="more" href="resources.html#erp">See resources</a>
+            </article>
+
+            <article class="card course" id="analytics" data-level="intermediate" data-subject="cs is">
+              <img class="icon is" src="assets/icon-chart.svg" alt="">
+              <h3>Data analytics and dashboards</h3>
+              <p class="meta"><span class="tag intermediate">Intermediate</span><span>6 weeks</span><span class="tag subj cs">Computer science</span><span class="tag subj is">Information systems</span></p>
+              <ul>
+                <li>Cleaning data in spreadsheets and SQL</li>
+                <li>Descriptive statistics and charts</li>
+                <li>Dashboards in Power BI or a similar tool</li>
+                <li>Telling the story behind the numbers</li>
+              </ul>
+              <p class="project"><strong>Mini project:</strong> Build a one-page dashboard from a public dataset and present three findings.</p>
+              <a class="more" href="resources.html#analytics">See resources</a>
+            </article>
+
+            <article class="card course" id="itpm" data-level="intermediate" data-subject="it is">
+              <img class="icon is" src="assets/icon-pm.svg" alt="">
+              <h3>IT project management and governance</h3>
+              <p class="meta"><span class="tag intermediate">Intermediate</span><span>6 weeks</span><span class="tag subj it">IT</span><span class="tag subj is">Information systems</span></p>
+              <ul>
+                <li>Scope, schedule and budget</li>
+                <li>Scrum and Kanban</li>
+                <li>Risk registers and change control</li>
+                <li>IT governance, ITIL and COBIT overview</li>
+              </ul>
+              <p class="project"><strong>Mini project:</strong> Write a project plan with a risk register for a small software rollout.</p>
+              <a class="more" href="resources.html#itpm">See resources</a>
+            </article>
+
           </div>
         </div>
       </div>
@@ -326,7 +412,7 @@
       <div class="foot-grid">
         <div>
           <a class="brand" href="index.html"><img src="assets/logo-mark.svg" alt="" width="36" height="36"><span>BytePath</span></a>
-          <p>A free guide to learning IT and computer science, one stop at a time.</p>
+          <p>A free guide to learning IT, computer science and information systems, one stop at a time.</p>
         </div>
         <div>
           <h3>Learn</h3>

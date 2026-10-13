@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="#0E8A8A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Connected modules icon">
+  <rect x="6" y="6" width="15" height="15" rx="3" fill="#FFC736" fill-opacity="0.55"/>
+  <rect x="27" y="6" width="15" height="15" rx="3" fill="#fff"/>
+  <rect x="6" y="27" width="15" height="15" rx="3" fill="#fff"/>
+  <rect x="27" y="27" width="15" height="15" rx="3" fill="#fff"/>
+  <path d="M21 13.5h6M13.5 21v6M34.5 21v6M21 34.5h6"/>
+</svg>

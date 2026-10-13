@@ -2,7 +2,7 @@
 
 **Live site:** https://byte-path.vercel.app
 
-A free, multi-page learning hub for **IT** and **computer science**. It does not host courses. It puts the best existing ones in a sensible order, with roadmaps, resources and a quiz to help you choose a path.
+A free, multi-page learning hub for **IT**, **computer science** and **information systems (IS)**. It does not host courses. It puts the best existing ones in a sensible order, with roadmaps, resources and a quiz to help you choose a path.
 
 Built with plain HTML and CSS. One small JavaScript file powers the dark-mode button; everything else works without JavaScript.
 
@@ -10,18 +10,18 @@ Built with plain HTML and CSS. One small JavaScript file powers the dark-mode bu
 
 | Page | What it does |
 | --- | --- |
-| `index.html` | Home: choose a subject (IT or CS), how BytePath works |
-| `courses.html` | 17 tracks with filters by subject and level |
-| `roadmap.html` | Step-by-step route for IT and for CS, plus certifications |
+| `index.html` | Home: choose a subject (IT, CS or IS), how BytePath works |
+| `courses.html` | 23 tracks with filters by subject and level |
+| `roadmap.html` | Step-by-step route for IT, CS and IS, plus IT certifications |
 | `resources.html` | Curated links per track, cheat sheets, FAQ |
-| `quiz.html` | "Which path fits you?" five-question quiz |
+| `quiz.html` | "Which path fits you?" five-question quiz with three possible subjects |
 | `about.html` | Principles, sample study week, contact form |
 
 ## Features
 
-- **IT and computer science tracks**, each tagged IT, CS or both
+- **Three subjects**: IT, computer science and information systems (business analysis, systems design, ERP, analytics, project management). Each track is tagged with one or more subjects
 - **CSS-only filters** on the courses page (radio inputs and sibling selectors)
-- **CSS-only quiz**: 5 questions, majority of 3 decides IT or CS, using `:has()`
+- **CSS-only quiz**: 5 questions with three answers each. Three matching answers decide the result, and an even 2-2-1 split shows a "between two subjects" result, using `:has()`
 - **Dark mode**: follows the device setting automatically, with a header toggle that remembers the choice
 - **CSS-only mobile menu** and `<details>` FAQ
 - **Smooth scrolling** to sections (turned off for visitors who prefer reduced motion)
@@ -46,7 +46,7 @@ bytepath/
     ├── logo-mark.svg
     ├── route-map.svg
     ├── route-map-dark.svg
-    └── icon-*.svg     17 track icons
+    └── icon-*.svg     23 track icons (blue IT, violet CS, teal IS)
 ```
 
 ## Run it
@@ -68,7 +68,7 @@ Fonts (Bricolage Grotesque and Figtree) load from Google Fonts. Offline, the sit
 
 **Course filters.** Radio inputs sit before the course grid. A rule such as `#f-beg:checked ~ .course-grid .card:not([data-level="beginner"])` hides the cards that do not match. Cards carry `data-level` and `data-subject` attributes.
 
-**Quiz.** Each question has radio ids `q1-it` / `q1-cs` and so on. For each side, ten `:has()` selectors cover every way to pick 3 or more of 5. The matching result block is shown, and the "pending" message hides once all five are answered. The reset button clears the answers. A tie is impossible with five two-way questions.
+**Quiz.** Each question has three radios with ids like `q1-it`, `q1-cs` and `q1-is`. For each subject, ten `:has()` selectors cover every way to pick 3 or more of 5 answers, and that result block is shown. With 5 answers and 3 subjects, the only case with no majority is a 2-2-1 split, so 30 more selectors per pair of subjects show a "between two subjects" result once all five are answered. The "pending" message hides when any result shows or all five are answered. The reset button clears the answers.
 
 **Dark mode.** Colours are CSS variables on `:root`. The dark palette applies in two cases:
 

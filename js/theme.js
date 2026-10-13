@@ -1,3 +1,6 @@
+/* BytePath theme switch.
+   Without this file the site still follows the device's light or dark setting.
+   With it, the header button lets a visitor pick a theme and remembers the choice. */
 (function () {
   var KEY = 'bytepath-theme';
   var root = document.documentElement;
@@ -26,6 +29,7 @@
     if (button) button.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
   }
 
+  // Runs in <head>, before the page paints, so there is no flash of the wrong theme.
   root.classList.add('js');
   apply(readSaved() || systemTheme());
 
@@ -40,6 +44,7 @@
     });
   });
 
+  // If the visitor never chose a theme, follow the device when its setting changes.
   if (media && media.addEventListener) {
     media.addEventListener('change', function () {
       if (!readSaved()) apply(systemTheme());

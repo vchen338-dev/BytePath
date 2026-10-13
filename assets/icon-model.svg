@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="#0E8A8A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Data model icon">
+  <rect x="5" y="8" width="16" height="14" rx="3" fill="#FFC736" fill-opacity="0.55"/>
+  <path d="M5 14h16"/>
+  <rect x="27" y="26" width="16" height="14" rx="3" fill="#fff"/>
+  <path d="M27 32h16"/>
+  <path d="M21 15h6c3 0 4 2 4 5v6"/>
+</svg>

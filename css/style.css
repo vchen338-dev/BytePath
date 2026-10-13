@@ -1,3 +1,5 @@
+/* BytePath - shared styles. Colors live in variables so the light and dark themes can swap them (see the end of this file). */
+
 :root {
   color-scheme: light;
   --paper: #F4F7FB;
@@ -15,11 +17,13 @@
   --grid: rgba(36, 80, 224, 0.07);
   --icon-tile: #E8EEFC;
   --icon-tile-cs: #EFE9FD;
+  --icon-tile-is: #E0F4F2;
   --tag-beg-bg: #DDF4EC; --tag-beg-fg: #0B6148;
   --tag-int-bg: #FFF0C2; --tag-int-fg: #6F5100;
   --tag-adv-bg: #FFE0DA; --tag-adv-fg: #98281A;
   --subj-it-bg: #EEF3FE; --subj-it-line: #B9CBF7; --subj-it-fg: #183590;
   --subj-cs-bg: #F5F0FE; --subj-cs-line: #CDB9F7; --subj-cs-fg: #5B2BC4;
+  --subj-is-bg: #E9F7F5; --subj-is-line: #A8DAD5; --subj-is-fg: #086060;
   --mint: #17A47C;
   --sun: #FFC736;
   --coral: #E8553D;
@@ -73,6 +77,7 @@ a:hover { color: var(--link-hover); }
 }
 .skip:focus { left: 8px; }
 
+/* ---------- Header ---------- */
 .site-header {
   background: var(--paper);
   border-bottom: 1px solid var(--line);
@@ -115,6 +120,7 @@ a:hover { color: var(--link-hover); }
 .btn-sun:hover { background: #fff; border-color: #fff; color: #0F1B33; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 
+/* ---------- Hero and page headers ---------- */
 .hero, .page-head {
   background-image:
     linear-gradient(var(--grid) 1px, transparent 1px),
@@ -130,11 +136,13 @@ a:hover { color: var(--link-hover); }
 .page-head { padding: 64px 0 52px; }
 .page-head h1 { font-size: clamp(2.2rem, 4.6vw, 3.4rem); }
 
+/* ---------- Sections ---------- */
 .section { padding: 72px 0; }
 .section-alt { background: var(--card); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .section-head { max-width: 62ch; margin-bottom: 36px; }
 .section-head p { color: var(--muted); margin: 0; }
 
+/* ---------- Cards ---------- */
 .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
 .card {
   background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
@@ -154,6 +162,7 @@ a:hover { color: var(--link-hover); }
 .audience div:nth-child(3) h3 { border-left-color: var(--sun); }
 .audience p { color: var(--muted); }
 
+/* ---------- Steps (a real sequence, so numbered) ---------- */
 .steps { list-style: none; counter-reset: step; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 .steps li { counter-increment: step; position: relative; padding-top: 64px; }
 .steps li::before {
@@ -165,16 +174,19 @@ a:hover { color: var(--link-hover); }
 }
 .steps p { color: var(--muted); margin: 0; }
 
+/* ---------- Call-out band ---------- */
 .band { background: var(--band-bg); color: #fff; padding: 64px 0; }
 .band h2 { margin-bottom: 0.3em; }
 .band p { color: #C9D3E8; max-width: 56ch; }
 
+/* ---------- Tags ---------- */
 .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 0 0 12px; color: var(--muted); font-size: 0.95rem; }
 .tag { display: inline-block; padding: 2px 10px; border-radius: 999px; font-weight: 700; font-size: 0.85rem; }
 .tag.beginner { background: var(--tag-beg-bg); color: var(--tag-beg-fg); }
 .tag.intermediate { background: var(--tag-int-bg); color: var(--tag-int-fg); }
 .tag.advanced { background: var(--tag-adv-bg); color: var(--tag-adv-fg); }
 
+/* ---------- Courses (CSS-only filter) ---------- */
 .filterable > input { position: absolute; opacity: 0; pointer-events: none; }
 .filterable > label {
   display: inline-block; cursor: pointer; font-weight: 700;
@@ -191,6 +203,7 @@ a:hover { color: var(--link-hover); }
 #f-int:checked ~ .course-grid .course:not([data-level="intermediate"]),
 #f-adv:checked ~ .course-grid .course:not([data-level="advanced"]) { display: none; }
 
+/* ---------- Roadmap (route line) ---------- */
 .route { list-style: none; margin: 0; padding: 0; max-width: 780px; }
 .stop { --c: var(--blue); position: relative; padding: 0 0 48px 76px; }
 .stop::before {
@@ -211,6 +224,7 @@ a:hover { color: var(--link-hover); }
 .stop ul { margin: 0 0 0; padding-left: 20px; }
 .stop li { margin-bottom: 4px; }
 
+/* ---------- Tables ---------- */
 .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); }
 table { border-collapse: collapse; width: 100%; min-width: 560px; }
 th, td { text-align: left; padding: 13px 18px; border-bottom: 1px solid var(--line); vertical-align: top; }
@@ -222,6 +236,7 @@ code, kbd {
 }
 .note { color: var(--muted); font-size: 0.95rem; margin-top: 12px; }
 
+/* ---------- Resources ---------- */
 .res-group { padding: 36px 0; border-top: 1px solid var(--line); scroll-margin-top: 80px; }
 .res-group:first-of-type { border-top: 0; }
 .res-group h2 { font-size: 1.6rem; display: flex; align-items: center; gap: 14px; }
@@ -242,6 +257,7 @@ code, kbd {
 }
 .jump a:hover { background: var(--ink); color: var(--on-ink); }
 
+/* ---------- FAQ ---------- */
 .faq { max-width: 760px; }
 .faq details { border-bottom: 1px solid var(--line); }
 .faq summary {
@@ -255,6 +271,7 @@ code, kbd {
 .faq details[open] summary::after { content: "\2212"; }
 .faq details p { color: var(--muted); padding-right: 40px; }
 
+/* ---------- Form ---------- */
 .form { max-width: 560px; display: grid; gap: 18px; }
 .form label { font-weight: 700; display: block; margin-bottom: 6px; }
 .form input, .form select, .form textarea {
@@ -269,6 +286,7 @@ code, kbd {
 .principles { padding-left: 20px; }
 .principles li { margin-bottom: 10px; }
 
+/* ---------- Footer ---------- */
 .site-footer { background: var(--card); border-top: 1px solid var(--line); padding: 48px 0 32px; }
 .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; }
 .site-footer h3 { font-size: 1rem; margin-bottom: 10px; }
@@ -277,6 +295,7 @@ code, kbd {
 .site-footer p { color: var(--muted); max-width: 40ch; }
 .copy { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.93rem; }
 
+/* ---------- Responsive ---------- */
 @media (max-width: 860px) {
   .hero { padding: 48px 0 56px; }
   .hero-grid, .two-col, .foot-grid { grid-template-columns: 1fr; }
@@ -302,6 +321,8 @@ code, kbd {
   .course-grid { grid-template-columns: 1fr; }
   .stop { padding-left: 60px; }
 }
+
+/* ---------- Computer science additions ---------- */
 :root {
   --violet: #6D3BE0;
   --violet-deep: #5B2BC4;
@@ -320,7 +341,8 @@ code, kbd {
 #s-it:checked ~ .course-grid .course:not([data-subject~="it"]),
 #s-cs:checked ~ .course-grid .course:not([data-subject~="cs"]) { display: none; }
 
-.subjects { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+/* home: subject choice */
+.subjects { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
 .subject {
   background: var(--card); border: 1px solid var(--line); border-top: 8px solid var(--blue);
   border-radius: var(--radius); padding: 28px; display: flex; flex-direction: column;
@@ -339,15 +361,37 @@ code, kbd {
 .subject.cs .btn { background: var(--violet); border-color: var(--violet); }
 .subject.cs .btn:hover { background: var(--violet-deep); border-color: var(--violet-deep); }
 
+/* resources: subject headings */
 .subject-title { font-size: 1.1rem; font-weight: 800; color: var(--muted); letter-spacing: 0; margin: 0 0 8px; }
 .subject-title.second { margin-top: 40px; }
 
+/* roadmap: computer science route uses violet first */
 .route.cs .stop:nth-child(1) { --c: var(--violet); }
 
-@media (max-width: 860px) {
+@media (max-width: 1020px) {
   .subjects { grid-template-columns: 1fr; }
 }
 
+/* ---------- Information systems additions (teal) ---------- */
+:root {
+  --teal: #0B7C7C;
+  --teal-deep: #086060;
+  --teal-text: #086060;
+}
+
+.icon.is, .res-group h2 img.is { background: var(--icon-tile-is); }
+.tag.subj.is { background: var(--subj-is-bg); border-color: var(--subj-is-line); color: var(--subj-is-fg); }
+
+#s-is:checked ~ .course-grid .course:not([data-subject~="is"]) { display: none; }
+
+.subject.is { border-top-color: var(--teal); }
+.subject.is .starter a { color: var(--teal-text); }
+.subject.is .btn { background: var(--teal); border-color: var(--teal); }
+.subject.is .btn:hover { background: var(--teal-deep); border-color: var(--teal-deep); }
+
+.route.is .stop:nth-child(1) { --c: var(--teal); }
+
+/* ---------- Theme toggle (needs js/theme.js, hidden without it) ---------- */
 .theme-toggle {
   display: none; align-items: center; justify-content: center;
   width: 42px; height: 42px; padding: 0; cursor: pointer;
@@ -364,6 +408,9 @@ html.js .theme-toggle { display: inline-flex; }
 :root[data-theme="dark"] .theme-toggle .i-moon { display: none; }
 :root:not([data-theme="dark"]) .theme-toggle .i-sun { display: none; }
 
+/* ---------- Dark theme ----------
+   1. Follows the device setting automatically (works without JavaScript).
+   2. js/theme.js sets data-theme="light" or "dark" when the visitor uses the toggle. */
 .hero-art .map-dark { display: none; }
 
 @media (prefers-color-scheme: dark) {
@@ -388,6 +435,8 @@ html.js .theme-toggle { display: inline-flex; }
     --subj-it-bg: #1B2A52; --subj-it-line: #3A4F8F; --subj-it-fg: #A9C0FF;
     --subj-cs-bg: #271B4D; --subj-cs-line: #4B3A8F; --subj-cs-fg: #C4AEFF;
     --violet-text: #C4AEFF;
+    --subj-is-bg: #0F2E2F; --subj-is-line: #2A6B6B; --subj-is-fg: #7FE0DC;
+    --teal-text: #7FE0DC;
   }
   :root:not([data-theme="light"]) .hero-art .map-light { display: none; }
   :root:not([data-theme="light"]) .hero-art .map-dark { display: block; }
@@ -414,6 +463,8 @@ html.js .theme-toggle { display: inline-flex; }
     --subj-it-bg: #1B2A52; --subj-it-line: #3A4F8F; --subj-it-fg: #A9C0FF;
     --subj-cs-bg: #271B4D; --subj-cs-line: #4B3A8F; --subj-cs-fg: #C4AEFF;
     --violet-text: #C4AEFF;
+    --subj-is-bg: #0F2E2F; --subj-is-line: #2A6B6B; --subj-is-fg: #7FE0DC;
+    --teal-text: #7FE0DC;
 }
 :root[data-theme="dark"] .hero-art .map-light { display: none; }
 :root[data-theme="dark"] .hero-art .map-dark { display: block; }
