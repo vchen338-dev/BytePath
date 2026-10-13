@@ -482,4 +482,7 @@ html.js .theme-toggle { display: inline-flex; }
 .two-col > * { min-width: 0; }
 .form { grid-template-columns: minmax(0, 1fr); }
 .two-col table { min-width: 0; }
-th, td { overflow-wrap: anywhere; }
+@media (max-width: 860px) {
+  .two-col th, .two-col td { padding: 10px 12px; font-size: 0.95rem; }
+  .two-col tbody th, .two-col td:last-child { white-space: nowrap; }
+}
