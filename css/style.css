@@ -478,3 +478,8 @@ html.js .theme-toggle { display: inline-flex; }
 .form-status.error { background: var(--tag-adv-bg); color: var(--tag-adv-fg); border-color: var(--tag-adv-fg); }
 
 .form button:disabled { opacity: 0.6; cursor: wait; }
+
+.two-col > * { min-width: 0; }
+.form { grid-template-columns: minmax(0, 1fr); }
+.two-col table { min-width: 0; }
+th, td { overflow-wrap: anywhere; }
