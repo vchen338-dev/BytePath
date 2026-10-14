@@ -37,11 +37,15 @@ bytepath/
 ├── resources.html
 ├── quiz.html
 ├── about.html
+├── login.html
+├── firestore.rules
 ├── README.md
 ├── css/
 │   └── style.css      all styles, colours as CSS variables
 ├── js/
-│   └── theme.js       dark-mode toggle (optional)
+│   ├── theme.js       dark-mode toggle (optional)
+│   ├── auth.js        login with Firebase
+│   └── firebase-config.js   your Firebase settings
 └── assets/
     ├── logo-mark.svg
     ├── route-map.svg
@@ -76,6 +80,28 @@ Fonts (Bricolage Grotesque and Figtree) load from Google Fonts. Offline, the sit
 2. the visitor chose dark (`:root[data-theme="dark"]`)
 
 `js/theme.js` runs in `<head>`, so the right theme is set before the page paints. It saves the choice in `localStorage` under `bytepath-theme`. Without JavaScript, the toggle stays hidden and the site follows the device setting.
+
+## Login (Firebase)
+
+`login.html` lets visitors sign up, log in (email and password, or Google), reset a password and log out. It uses Firebase Authentication, and keeps a small profile document per user in Firestore (`users/{uid}`).
+
+Files: `login.html`, `js/auth.js`, `js/firebase-config.js`, `firestore.rules`.
+
+Set it up once:
+
+1. Go to https://console.firebase.google.com and create a project.
+2. Build > Authentication > Get started. Turn on **Email/Password** and **Google**.
+3. Authentication > Settings > Authorized domains: add `byte-path.vercel.app` (and any custom domain).
+4. Build > Firestore Database > Create database.
+5. Firestore > Rules: paste the contents of `firestore.rules` and publish. This is what keeps each user's data private.
+6. Project settings > Your apps > add a **Web app**, then copy its settings into `js/firebase-config.js`.
+7. Redeploy the site.
+
+Notes:
+
+- Login uses JavaScript modules, which do not run from a double-clicked `index.html`. Use `python3 -m http.server` locally, or the deployed site.
+- The Firebase settings in `firebase-config.js` are public by design. Do not put a service account key or any secret in the website.
+- Until the settings are filled in, the login page shows "Login is not set up yet".
 
 ## Customise
 

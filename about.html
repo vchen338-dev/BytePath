@@ -13,52 +13,6 @@
   <link rel="stylesheet" href="css/style.css">
   <script src="js/theme.js"></script>
 </head>
-
-<script>
-  (function () {
-    var form = document.getElementById('contact-form');
-    var statusEl = document.getElementById('form-status');
-    var button = form.querySelector('button[type="submit"]');
-
-    function show(text, type) {
-      statusEl.textContent = text;
-      statusEl.className = 'form-status ' + type;
-    }
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
-      }
-
-      button.disabled = true;
-      button.textContent = 'Sending...';
-      statusEl.textContent = '';
-      statusEl.className = 'form-status';
-
-      fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      })
-        .then(function (res) {
-          if (!res.ok) throw new Error('failed');
-          show('Thank you! Your message has been sent. We will reply to your email soon.', 'ok');
-          form.reset();
-        })
-        .catch(function () {
-          show('Sorry, your message could not be sent. Please check your connection and try again.', 'error');
-        })
-        .then(function () {
-          button.disabled = false;
-          button.textContent = 'Send message';
-        });
-    });
-  })();
-</script>
-
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
@@ -72,8 +26,8 @@
         <a href="courses.html">Courses</a>
         <a href="roadmap.html">Roadmap</a>
         <a href="resources.html">Resources</a>
-        <a href="quiz.html">Quiz</a>
         <a href="about.html" aria-current="page">About</a>
+        <a href="login.html" id="auth-link">Log in</a>
       </nav>
       <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Dark mode" title="Switch between light and dark">
         <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5Z"/></svg>
@@ -129,32 +83,30 @@
           <h2>Suggest a resource</h2>
           <p class="lead">Found a great lesson, or a link that no longer works? Tell us and we will check it.</p>
         </div>
-     
-           <form class="form" id="contact-form" action="https://formspree.io/f/xvkzwppw" method="post" novalidate>
-              <div>
-                <label for="name">Your name</label>
-                <input id="name" name="name" type="text" autocomplete="name" required>
-              </div>
-              <div>
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" autocomplete="email" required>
-              </div>
-              <div>
-                <label for="topic">What is this about?</label>
-                <select id="topic" name="topic">
-                  <option>Suggest a resource</option>
-                  <option>Report a broken link</option>
-                  <option>Ask a question</option>
-                </select>
-              </div>
-              <div>
-                <label for="message">Message</label>
-                <textarea id="message" name="message" required></textarea>
-              </div>
-              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true">
-              <button class="btn" type="submit">Send message</button>
-              <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
-            </form>
+        <!-- Replace the mailto address below with your own. A static site cannot send email by itself. -->
+        <form class="form" action="mailto:hello@example.com" method="post" enctype="text/plain">
+          <div>
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div>
+            <label for="topic">What is this about?</label>
+            <select id="topic" name="topic">
+              <option>Suggest a resource</option>
+              <option>Report a broken link</option>
+              <option>Ask a question</option>
+            </select>
+          </div>
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button class="btn" type="submit">Send message</button>
+        </form>
       </div>
     </section>
   </main>
@@ -185,5 +137,6 @@
       <p class="copy">&copy; 2026 BytePath. External links lead to third-party sites.</p>
     </div>
   </footer>
+  <script type="module" src="js/auth.js"></script>
 </body>
 </html>
