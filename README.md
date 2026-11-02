@@ -4,7 +4,7 @@
 
 A free, multi-page learning hub for **IT**, **computer science** and **information systems (IS)**. It does not host courses. It puts the best existing ones in a sensible order, with roadmaps, resources and a quiz to help you choose a path.
 
-Built with plain HTML and CSS. One small JavaScript file powers the dark-mode button; everything else works without JavaScript.
+Built with plain HTML and CSS. Public pages work without JavaScript. Login, accounts and saved progress need JavaScript and a free Supabase project.
 
 ## Pages
 
@@ -15,6 +15,8 @@ Built with plain HTML and CSS. One small JavaScript file powers the dark-mode bu
 | `roadmap.html` | Step-by-step route for IT, CS and IS, plus IT certifications |
 | `resources.html` | Curated links per track, cheat sheets, FAQ |
 | `quiz.html` | "Which path fits you?" five-question quiz with three possible subjects |
+| `login.html` | Log in, sign up, reset password, two-factor code |
+| `account.html` | Continue learning (Resume / Mark as done), track checklist, 2FA setup, change password, log out |
 | `about.html` | Principles, sample study week, contact form |
 
 ## Features
@@ -26,6 +28,19 @@ Built with plain HTML and CSS. One small JavaScript file powers the dark-mode bu
 - **CSS-only mobile menu** and `<details>` FAQ
 - **Smooth scrolling** to sections (turned off for visitors who prefer reduced motion)
 - **Accessibility**: skip link, visible focus, `aria-current`, contrast-checked palettes in both themes
+
+## Accounts and security setup (do once)
+
+1. Create a free project at supabase.com. Paste `supabase/schema.sql` into **SQL Editor** and run it.
+2. Put **Project URL** and the **anon public** key into `js/config.js`. Never put the `service_role` key anywhere in this folder.
+3. In Supabase **Authentication**:
+   - Providers > Email: keep *Confirm email* **on**; set minimum password length **12** and require lowercase, uppercase, digits and symbols; turn on *Secure password change*; enable leaked-password protection if your plan has it.
+   - Multi-Factor: make sure **TOTP** is enabled.
+   - URL Configuration: set Site URL to `https://byte-path.vercel.app` and add `https://byte-path.vercel.app/account.html` as a redirect URL.
+   - Rate Limits: leave the defaults or lower them. Consider CAPTCHA (Cloudflare Turnstile) under Attack Protection.
+4. Deploy. `vercel.json` adds the security headers.
+
+What protects accounts: Supabase hashes passwords with bcrypt and rotates refresh tokens; the site uses PKCE; optional authenticator-app 2FA, and once a user enables it the database refuses password-only sessions; Row Level Security limits every user to their own row and the database rejects unknown track ids; a strict Content-Security-Policy (`script-src 'self'`), HSTS and clickjacking protection come from `vercel.json`; the Supabase library is vendored in `js/vendor/` so no third-party script runs on the site; sign-up and reset answers do not reveal whether an email is registered. If you add a new domain or an external script, update the CSP in `vercel.json`.
 
 ## Folder structure
 
@@ -41,7 +56,12 @@ bytepath/
 ├── css/
 │   └── style.css      all styles, colours as CSS variables
 ├── js/
-│   └── theme.js       dark-mode toggle (optional)
+│   ├── theme.js       dark-mode toggle (optional)
+│   ├── config.js      Supabase URL and anon key
+│   ├── auth.js        login, 2FA, progress
+│   ├── contact.js     contact form
+│   └── vendor/        supabase-js, pinned copy
+├── supabase/schema.sql  table, policies
 └── assets/
     ├── logo-mark.svg
     ├── route-map.svg
@@ -81,7 +101,7 @@ Fonts (Bricolage Grotesque and Figtree) load from Google Fonts. Offline, the sit
 
 - **Colours and fonts**: edit the variables at the top of `css/style.css`, and the dark blocks lower down.
 - **Contact form**: in `about.html`, replace `mailto:hello@example.com` with your address. A static site cannot send email on its own. For a real form, use a service such as Formspree or Netlify Forms.
-- **Add a course**: copy an `article.card.course` in `courses.html`, set a unique `id`, `data-level` and `data-subject`, and add a matching `.res-group` with the same id in `resources.html`.
+- **Add a course**: also add its id to the `TRACKS` list in `js/auth.js` and to both lists in `supabase/schema.sql`. Then: copy an `article.card.course` in `courses.html`, set a unique `id`, `data-level` and `data-subject`, and add a matching `.res-group` with the same id in `resources.html`.
 - **Add the Quiz to the menu**: the link currently appears only on `quiz.html`. Add `<a href="quiz.html">Quiz</a>` to the `<nav class="main-nav">` on the other pages.
 - **Brand name and footer**: search for "BytePath" and the copyright line in each page.
 

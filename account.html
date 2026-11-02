@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Your account | BytePath</title>
+  <meta name="description" content="Your BytePath progress and security settings.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/theme.js"></script>
+</head>
+<body data-page="account">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="brand" href="index.html"><img src="assets/logo-mark.svg" alt="" width="36" height="36"><span>BytePath</span></a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Open the menu">
+      <label for="nav-toggle" class="menu-btn">Menu</label>
+      <nav class="main-nav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="roadmap.html">Roadmap</a>
+        <a href="resources.html">Resources</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="about.html">About</a>
+        <a href="account.html" aria-current="page">Account</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Dark mode" title="Switch between light and dark">
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5Z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section">
+      <div class="wrap auth wide">
+        <h1>Your account</h1>
+        <p id="msg" class="form-status" role="status" aria-live="polite"></p>
+        <div id="app" hidden>
+          <p class="lead">Signed in as <strong id="who"></strong></p>
+
+          <section class="panel" aria-labelledby="h-recent">
+            <h2 id="h-recent">Continue learning</h2>
+            <p id="recent-empty">No current course yet. Press &ldquo;Make current&rdquo; next to a track below.</p>
+            <div id="recent" hidden>
+              <p class="recent-title" id="recent-title"></p>
+              <div class="actions">
+                <a class="btn" id="resume" href="#" target="_blank" rel="noopener noreferrer">Resume course</a>
+                <button class="btn btn-ghost" id="mark-done" type="button">Mark as done</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel" aria-labelledby="h-prog">
+            <h2 id="h-prog">Your tracks <span class="muted">(<span id="count">0</span> of <span id="total">0</span> done)</span></h2>
+            <ul class="track-list" id="tracks"></ul>
+            <p id="progress-msg" class="form-status" role="status" aria-live="polite"></p>
+          </section>
+
+          <section class="panel" aria-labelledby="h-mfa">
+            <h2 id="h-mfa">Two-factor login</h2>
+            <p id="mfa-msg" class="form-status" role="status" aria-live="polite"></p>
+            <div id="mfa-off" hidden>
+              <p>Add a one-time code from an authenticator app (Aegis, 1Password, Google Authenticator) so a stolen password is not enough.</p>
+              <button class="btn" id="mfa-start" type="button">Set up two-factor</button>
+            </div>
+            <div id="mfa-on" hidden>
+              <p>Two-factor login is <strong>on</strong>.</p>
+              <button class="btn btn-ghost" id="mfa-disable" type="button">Turn off</button>
+            </div>
+            <div id="mfa-setup" hidden>
+              <p>Scan this code with your app, or type the key by hand.</p>
+              <img id="qr" class="qr" alt="QR code for your authenticator app" width="180" height="180">
+              <p><code id="secret"></code></p>
+              <form class="form" id="mfa-verify">
+                <div><label for="mfa-code">Enter the 6-digit code to confirm</label><input id="mfa-code" type="text" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="one-time-code" required></div>
+                <button class="btn" type="submit">Turn on</button>
+              </form>
+            </div>
+          </section>
+
+          <section class="panel" aria-labelledby="h-pw">
+            <h2 id="h-pw">Change password</h2>
+            <p id="pw-msg" class="form-status" role="status" aria-live="polite"></p>
+            <form class="form" id="pw-form">
+              <div><label for="new-pw">New password</label><input id="new-pw" type="password" autocomplete="new-password" required minlength="12" maxlength="72"></div>
+              <div><label for="new-pw2">Repeat new password</label><input id="new-pw2" type="password" autocomplete="new-password" required minlength="12" maxlength="72"></div>
+              <button class="btn" type="submit">Change password</button>
+            </form>
+          </section>
+
+          <div class="actions">
+            <button class="btn btn-ghost" id="logout" type="button">Log out</button>
+            <button class="btn btn-ghost" id="logout-all" type="button">Log out on all devices</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a class="brand" href="index.html"><img src="assets/logo-mark.svg" alt="" width="36" height="36"><span>BytePath</span></a>
+          <p>A free guide to learning IT, computer science and information systems, one stop at a time.</p>
+        </div>
+        <div>
+          <h3>Learn</h3>
+          <ul>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="roadmap.html">Roadmap</a></li>
+            <li><a href="resources.html">Resources</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>BytePath</h3>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="about.html#contact">Suggest a resource</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="copy">&copy; 2026 BytePath. External links lead to third-party sites.</p>
+    </div>
+  </footer>
+  <script src="js/config.js"></script>
+  <script src="js/vendor/supabase.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
