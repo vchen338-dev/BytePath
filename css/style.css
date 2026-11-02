@@ -486,3 +486,24 @@ html.js .theme-toggle { display: inline-flex; }
   .two-col th, .two-col td { padding: 10px 12px; font-size: 0.95rem; }
   .two-col tbody th, .two-col td:last-child { white-space: nowrap; }
 }
+/* ---------- Login and account ---------- */
+.hp { position: absolute; left: -9999px; }
+.mt-36 { margin-top: 36px; }
+.auth { max-width: 560px; }
+.auth.wide { max-width: 760px; }
+.auth .form-status { margin: 12px 0; }
+.auth .hint, .muted { color: var(--muted); font-size: .95rem; }
+.alt { display: flex; gap: 18px; flex-wrap: wrap; margin: 0; }
+.btn-link { background: none; border: 0; padding: 4px 0; color: var(--link); font: inherit; font-weight: 600; text-decoration: underline; cursor: pointer; }
+.btn-link:hover { color: var(--link-hover); }
+.btn-link:disabled { color: var(--muted); text-decoration: none; cursor: default; }
+.panel { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; margin: 0 0 24px; }
+.panel h2 { margin-top: 0; font-size: 1.3rem; }
+.recent-title { font-family: var(--head); font-size: 1.4rem; margin: 0 0 14px; }
+.track-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px 24px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.track-list li { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--line); }
+.track-list label { font-weight: 400; margin: 0; }
+.qr { background: #fff; padding: 8px; border-radius: 8px; }
+code { word-break: break-all; }
+[hidden] { display: none !important; }
+.track-list .btn-link { white-space: nowrap; }
