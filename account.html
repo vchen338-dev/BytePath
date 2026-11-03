@@ -64,42 +64,7 @@
             <p id="progress-msg" class="form-status" role="status" aria-live="polite"></p>
           </section>
 
-          <section class="panel" aria-labelledby="h-mfa">
-            <h2 id="h-mfa">Two-factor login</h2>
-            <p id="mfa-msg" class="form-status" role="status" aria-live="polite"></p>
-            <div id="mfa-off" hidden>
-              <p>Add a one-time code from an authenticator app (Aegis, 1Password, Google Authenticator) so a stolen password is not enough.</p>
-              <button class="btn" id="mfa-start" type="button">Set up two-factor</button>
-            </div>
-            <div id="mfa-on" hidden>
-              <p>Two-factor login is <strong>on</strong>.</p>
-              <button class="btn btn-ghost" id="mfa-disable" type="button">Turn off</button>
-            </div>
-            <div id="mfa-setup" hidden>
-              <p>Scan this code with your app, or type the key by hand.</p>
-              <img id="qr" class="qr" alt="QR code for your authenticator app" width="180" height="180">
-              <p><code id="secret"></code></p>
-              <form class="form" id="mfa-verify">
-                <div><label for="mfa-code">Enter the 6-digit code to confirm</label><input id="mfa-code" type="text" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="one-time-code" required></div>
-                <button class="btn" type="submit">Turn on</button>
-              </form>
-            </div>
-          </section>
-
-          <section class="panel" aria-labelledby="h-pw">
-            <h2 id="h-pw">Change password</h2>
-            <p id="pw-msg" class="form-status" role="status" aria-live="polite"></p>
-            <form class="form" id="pw-form">
-              <div><label for="new-pw">New password</label><input id="new-pw" type="password" autocomplete="new-password" required minlength="12" maxlength="72"></div>
-              <div><label for="new-pw2">Repeat new password</label><input id="new-pw2" type="password" autocomplete="new-password" required minlength="12" maxlength="72"></div>
-              <button class="btn" type="submit">Change password</button>
-            </form>
-          </section>
-
-          <div class="actions">
-            <button class="btn btn-ghost" id="logout" type="button">Log out</button>
-            <button class="btn btn-ghost" id="logout-all" type="button">Log out on all devices</button>
-          </div>
+          <p><a class="btn btn-ghost" href="settings.html">Account settings: 2FA, password, log out</a></p>
         </div>
       </div>
     </section>

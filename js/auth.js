@@ -102,7 +102,7 @@
             show('mfa');
           });
         }
-        location.replace('account.html');
+        location.replace('index.html#go');
       });
     }
 
@@ -126,7 +126,7 @@
       sb.auth.mfa.challengeAndVerify({ factorId: factorId, code: $('mfa-code').value.trim() })
         .then(function (r) {
           if (r.error) { failed(); say('msg', 'That code is not valid. Codes change every 30 seconds.'); return; }
-          location.replace('account.html');
+          location.replace('index.html#go');
         })
         .catch(function () { say('msg', 'Could not verify the code. Try again.'); })
         .then(function () { busy(forms.mfa, false); });
@@ -142,7 +142,7 @@
         .then(function (r) {
           if (r.error && r.error.status !== 422) throw r.error;
           // Same answer whether or not the address is already registered, so it cannot be probed.
-          if (r.data && r.data.session) { location.replace('account.html'); return; }
+          if (r.data && r.data.session) { location.replace('index.html#go'); return; }
           forms.signup.reset();
           say('msg', 'Check your inbox. If this address can be registered, a confirmation link is on its way.', 'ok');
         })
@@ -170,6 +170,8 @@
     var userId, done = [], current = null;
 
     function toLogin() { location.replace('login.html'); }
+
+    function progressPart() {
 
     function save() {
       $('count').textContent = done.length;
@@ -228,6 +230,16 @@
     });
     $('mark-done').addEventListener('click', function () { markDone(current); save(); renderTracks(); });
 
+      return function () {
+        return sb.from('progress').select('tracks,current').maybeSingle().then(function (r) {
+          done = (r.data && r.data.tracks) || [];
+          current = (r.data && r.data.current) || null;
+          renderTracks();
+        });
+      };
+    }
+
+    function settingsPart() {
     function refreshMfa() {
       return sb.auth.mfa.listFactors().then(function (r) {
         var on = !!(r.data && r.data.totp && r.data.totp.length);
@@ -292,6 +304,8 @@
     function signOut(scope) { sb.auth.signOut({ scope: scope }).then(toLogin, toLogin); }
     $('logout').addEventListener('click', function () { signOut('local'); });
     $('logout-all').addEventListener('click', function () { signOut('global'); });
+      return refreshMfa;
+    }
 
     sb.auth.getSession().then(function (r) {
       var s = r.data && r.data.session;
@@ -301,18 +315,11 @@
         userId = s.user.id;
         $('who').textContent = s.user.email;
         $('app').hidden = false;
-        return Promise.all([
-          sb.from('progress').select('tracks,current').maybeSingle(),
-          refreshMfa()
-        ]).then(function (res) {
-          done = (res[0].data && res[0].data.tracks) || [];
-          current = (res[0].data && res[0].data.current) || null;
-          renderTracks();
-        });
+        return (page === 'settings' ? settingsPart : progressPart)()();
       });
     }).catch(function () { say('msg', 'Could not load your account. Refresh the page.'); });
   }
 
   if (page === 'login') loginPage();
-  if (page === 'account') accountPage();
+  if (page === 'account' || page === 'settings') accountPage();
 })();

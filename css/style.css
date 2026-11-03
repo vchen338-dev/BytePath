@@ -507,3 +507,4 @@ html.js .theme-toggle { display: inline-flex; }
 code { word-break: break-all; }
 [hidden] { display: none !important; }
 .track-list .btn-link { white-space: nowrap; }
+.guest { margin: 20px 0 8px; }
