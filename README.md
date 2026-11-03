@@ -16,7 +16,8 @@ Built with plain HTML and CSS. Public pages work without JavaScript. Login, acco
 | `resources.html` | Curated links per track, cheat sheets, FAQ |
 | `quiz.html` | "Which path fits you?" five-question quiz with three possible subjects |
 | `login.html` | Log in, sign up, reset password, two-factor code |
-| `account.html` | Continue learning (Resume / Mark as done), track checklist, 2FA setup, change password, log out |
+| `account.html` | Continue learning (Resume / Mark as done) and the track checklist |
+| `settings.html` | Two-factor login, change password, log out |
 | `about.html` | Principles, sample study week, contact form |
 
 ## Features
@@ -42,6 +43,8 @@ Built with plain HTML and CSS. Public pages work without JavaScript. Login, acco
 
 What protects accounts: Supabase hashes passwords with bcrypt and rotates refresh tokens; the site uses PKCE; optional authenticator-app 2FA, and once a user enables it the database refuses password-only sessions; Row Level Security limits every user to their own row and the database rejects unknown track ids; a strict Content-Security-Policy (`script-src 'self'`), HSTS and clickjacking protection come from `vercel.json`; the Supabase library is vendored in `js/vendor/` so no third-party script runs on the site; sign-up and reset answers do not reveal whether an email is registered. If you add a new domain or an external script, update the CSP in `vercel.json`.
 
+The home page opens `login.html` first for visitors who are not signed in. "Continue without an account" remembers the choice in the browser (`bytepath-guest`) and only the home page is gated, so direct links to courses, roadmap and resources stay open. Guests cannot use the Account page.
+
 ## Folder structure
 
 ```
@@ -59,6 +62,7 @@ bytepath/
 │   ├── theme.js       dark-mode toggle (optional)
 │   ├── config.js      Supabase URL and anon key
 │   ├── auth.js        login, 2FA, progress
+│   ├── gate.js        sends first-time visitors of the home page to login.html
 │   ├── contact.js     contact form
 │   └── vendor/        supabase-js, pinned copy
 ├── supabase/schema.sql  table, policies
